@@ -12,4 +12,15 @@ public class FahrenheitConverter {
     public static int fromCelsius(int celsius) {
         return celsius * 9 / 5 + 32;
     }
+
+    public static class Calculator {
+
+        public static int divide(int a, int b) {
+                    if (b ==0){
+                        throw new IllegalArgumentException();
+                    }
+
+            return a / b;
+        }
+    }
 }

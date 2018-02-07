@@ -3,6 +3,9 @@ package com.infoshareacademy.jjdd3;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class FahrenheitConverterTest {
     @Test
@@ -25,5 +28,12 @@ public class FahrenheitConverterTest {
         assertThrows(IllegalArgumentException.class, () -> {
            FahrenheitConverter.toCelsius(-500);
         });
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = {"/fahrenheitToCelcious.csv"}, delimiter = ';')
+    void shouldPareFahrenheitToCelcious(int fahrenheit, int celcious){
+        assertEquals(FahrenheitConverter.toCelsius(fahrenheit), celcious, () -> "For " + fahrenheit + "F: ");
+
     }
 }
